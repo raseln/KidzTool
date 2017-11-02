@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "917174150728",
+    "firebase_url": "https://rasel-41d09.firebaseio.com",
+    "project_id": "rasel-41d09",
+    "storage_bucket": "rasel-41d09.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917174150728:android:e332edf44cb17348",
+        "android_client_info": {
+          "package_name": "com.raselahmed.kidztool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917174150728-oj1q5r6i3m3kue7a8n3etaf3cgc88rt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC0Bs7nsYd8SR6L2EQR1nsxjYosBCip9M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
