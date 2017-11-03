@@ -39,7 +39,7 @@ public class Profile extends AppCompatActivity {
             public void onClick(View v) {
                 firebaseAuth.signOut();
                 finish();
-                startActivity(new Intent(Profile.this, Profile.class));
+                startActivity(new Intent(Profile.this, MainActivity.class));
             }
         });
     }

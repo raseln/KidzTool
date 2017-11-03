@@ -6,33 +6,9 @@
     android:orientation="vertical"
     tools:context="com.raselahmed.kidztool.MainActivity">
 
-    <EditText
-        android:id="@+id/etEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Enter your email here"
-        android:gravity="center"/>
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Enter password"
-        android:gravity="center"/>
-
     <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/tvLoginLink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Already have an account? Sign in."
-        android:gravity="center"/>
+        android:id="@+id/RegisterActivity"
+        android:text="Register"/>
 </LinearLayout>
