@@ -19,9 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etEmail,etPassword;
-    TextView tvLink;
-    Button btnReg;
+    private EditText etEmail,etPassword;
     private ProgressDialog progressBar;
     private FirebaseAuth firebaseAuth;
     @Override
@@ -34,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
-        btnReg = (Button) findViewById(R.id.btnRegister);
-        tvLink = (TextView) findViewById(R.id.tvLoginLink);
+        Button btnReg = (Button) findViewById(R.id.btnRegister);
+        TextView tvLink = (TextView) findViewById(R.id.tvLoginLink);
 
         btnReg.setOnClickListener(new View.OnClickListener() {
             @Override
