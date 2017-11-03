@@ -19,8 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
+        <activity android:name=".RegistrationActivity" />
         <activity android:name=".Profile" />
-        <activity android:name=".RegistrationActivity"></activity>
+        <activity android:name=".MathQuiz"/>
     </application>
 
 </manifest>

@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Kidz Tool</string>
+    <string name="btn_prev">Prev</string>
+    <string name="btn_next">Next</string>
+    <string name="btn_register">Register</string>
+    <string name="enter_email">Enter your email here</string>
+    <string name="enter_password">Enter password</string>
+    <string name="link_reg_message">Already have an account? Sign in.</string>
 </resources>
