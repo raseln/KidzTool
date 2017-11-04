@@ -23,7 +23,8 @@
         <activity android:name=".Profile" />
         <activity android:name=".MathQuiz" />
         <activity android:name=".RatingActivity" />
-        <activity android:name=".FeedbackActivity"></activity>
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".BiologyDictionary"></activity>
     </application>
 
 </manifest>

@@ -6,4 +6,12 @@
     <string name="enter_email">Enter your email here</string>
     <string name="enter_password">Enter password</string>
     <string name="link_reg_message">Already have an account? Sign in.</string>
+    <string name="biology_dictionary">Biology Dictionary</string>
+    <string name="log_in">Log In</string>
+    <string name="quiz">Quiz</string>
+    <string name="human">Human</string>
+    <string name="definition">Definition:</string>
+    <string name="general_name_scientific_name"><![CDATA[General Name -> Scientific Name]]></string>
+    <string name="scientific_name_general_name"><![CDATA[Scientific Name -> General Name]]></string>
+    <string name="profile">Profile</string>
 </resources>
