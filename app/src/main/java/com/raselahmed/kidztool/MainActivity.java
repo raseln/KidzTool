@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnRegister = (Button) findViewById(R.id.RegisterActivity);
-        btnRating = (Button) findViewById(R.id.rateBtn);
         //etEmail = (EditText) findViewById(R.id.etEmail);
         //etPassword = (EditText) findViewById(R.id.etPassword);
         //Button btnReg = (Button) findViewById(R.id.btnRegister);

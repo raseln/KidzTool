@@ -5,33 +5,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context="com.raselahmed.kidztool.FeedbackActivity">
 
     <EditText
         android:id="@+id/editNameId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Name" />
+        android:hint="Enter Name"
+        android:background="@drawable/input_outline"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"/>
 
     <EditText
         android:id="@+id/editSubId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter Subject"
-        android:inputType="textEmailSubject"/>
+        android:inputType="textEmailSubject"
+        android:background="@drawable/input_outline"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"/>
 
     <EditText
         android:id="@+id/editMsgId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Your Feedback here"
-        android:inputType="textLongMessage"/>
+        android:layout_height="120dp"
+        android:hint="Your Feedback here..."
+        android:inputType="textLongMessage"
+        android:background="@drawable/input_outline"
+        android:padding="15dp"
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:id="@+id/submitBtnId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Submit"/>
+        android:text="Submit"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>
