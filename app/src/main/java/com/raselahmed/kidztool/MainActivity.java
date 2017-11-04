@@ -13,29 +13,80 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     //private EditText etEmail, etPassword;
     private ProgressDialog progressBar;
     private FirebaseAuth firebaseAuth;
-    Button btnRegister,btnRating;
+    Button btnRegister,btnLogIn, btnProfile, btnQuiz, btnDictionary;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnRegister = (Button) findViewById(R.id.RegisterActivity);
-        //etEmail = (EditText) findViewById(R.id.etEmail);
-        //etPassword = (EditText) findViewById(R.id.etPassword);
-        //Button btnReg = (Button) findViewById(R.id.btnRegister);
-        //TextView tvLink = (TextView) findViewById(R.id.tvLoginLink);
+        btnRegister = findViewById(R.id.RegisterActivity);
+        btnLogIn = findViewById(R.id.LoginActivity);
+        btnProfile = findViewById(R.id.ProfileActivity);
+        btnQuiz = findViewById(R.id.QuizActivity);
+        btnDictionary = findViewById(R.id.Dictionary);
+        textView = findViewById(R.id.loggedInUserEmailtext);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if (firebaseAuth.getCurrentUser() != null){
+            btnRegister.setVisibility(View.GONE);
+            btnLogIn.setVisibility(View.GONE);
+            btnProfile.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.VISIBLE);
+            textView.setText("Hello, "+user.getEmail());
+        }
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MathQuiz.class);
+                Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Profile.class);
+                startActivity(intent);
+            }
+        });
+
+        btnQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(firebaseAuth.getCurrentUser()!=null){
+                    Intent intent = new Intent(MainActivity.this, MathQuiz.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        btnDictionary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, BiologyDictionary.class);
                 startActivity(intent);
             }
         });
