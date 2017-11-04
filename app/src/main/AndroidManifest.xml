@@ -21,7 +21,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".Profile" />
-        <activity android:name=".MathQuiz"/>
+        <activity android:name=".MathQuiz" />
+        <activity android:name=".RatingActivity"></activity>
     </application>
 
 </manifest>

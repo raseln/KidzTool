@@ -12,4 +12,10 @@
         android:id="@+id/RegisterActivity"
         android:text="@string/btn_register"/>
 
+    <Button
+        android:id="@+id/rateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rating"/>
+
 </LinearLayout>
