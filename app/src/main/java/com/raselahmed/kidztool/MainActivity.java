@@ -59,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+        else if (item.getItemId() == R.id.feedbackId) {
+            Intent intent = new Intent(getApplicationContext(), FeedbackActivity.class);
+            startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
