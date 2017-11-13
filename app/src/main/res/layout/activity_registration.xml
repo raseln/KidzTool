@@ -4,7 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.raselahmed.kidztool.RegistrationActivity">
+    android:background="#4877CB"
+    tools:context="com.raselahmed.kidztool.application_layer.RegistrationActivity">
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your name"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/etNInstitution"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter your institution"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/etEmail"
@@ -34,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/link_reg_message"
+        android:textColor="@color/common_google_signin_btn_text_dark"
         android:gravity="center"/>
 
 </LinearLayout>

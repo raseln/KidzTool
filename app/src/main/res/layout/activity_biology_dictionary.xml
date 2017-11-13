@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.raselahmed.kidztool.MainActivity">
+    tools:context="com.raselahmed.kidztool.application_layer.MainActivity">
 
     <ToggleButton
         android:id="@+id/toggleButton"

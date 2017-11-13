@@ -8,10 +8,16 @@
     <string name="link_reg_message">Already have an account? Sign in.</string>
     <string name="biology_dictionary">Biology Dictionary</string>
     <string name="log_in">Log In</string>
-    <string name="quiz">Quiz</string>
     <string name="human">Human</string>
     <string name="definition">Definition:</string>
     <string name="general_name_scientific_name"><![CDATA[General Name -> Scientific Name]]></string>
     <string name="scientific_name_general_name"><![CDATA[Scientific Name -> General Name]]></string>
     <string name="profile">Profile</string>
+    <string name="quiz">Quiz</string>
+    <string name="logout">Logout</string>
+    <string name="notify_user">You have attempted all the quesions click finish quiz button</string>
+    <string name="finish_exam">Finish Exam</string>
+    <string name="number_of_questions">Number of question</string>
+    <string name="start_quiz">Start quiz</string>
+    <string name="note">Note: You can skip a question to answer it later.\n You can also finish the quiz by clicking \"finish quiz\" button at any time.</string>
 </resources>

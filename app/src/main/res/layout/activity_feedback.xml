@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context="com.raselahmed.kidztool.FeedbackActivity">
+    tools:context="com.raselahmed.kidztool.application_layer.FeedbackActivity">
 
     <EditText
         android:id="@+id/editNameId"

@@ -3,6 +3,7 @@
     package="com.raselahmed.kidztool">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,20 +12,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".application_layer.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegistrationActivity" />
-        <activity android:name=".Profile" />
-        <activity android:name=".MathQuiz" />
-        <activity android:name=".RatingActivity" />
-        <activity android:name=".FeedbackActivity" />
-        <activity android:name=".BiologyDictionary"></activity>
+        <activity android:name=".application_layer.LoginActivity" />
+        <activity android:name=".application_layer.RegistrationActivity" />
+        <activity android:name=".application_layer.Profile" />
+        <activity android:name=".application_layer.Quiz" />
+        <activity android:name=".application_layer.RatingActivity" />
+        <activity android:name=".application_layer.FeedbackActivity" />
+        <activity android:name=".application_layer.BiologyDictionary" />
+        <activity android:name=".application_layer.PhysicsActivity" />
+        <activity android:name=".application_layer.ChemistryActivity" />
+        <activity android:name=".application_layer.MathActivity" />
+        <activity android:name=".application_layer.QuizResult"></activity>
     </application>
 
 </manifest>
