@@ -17,11 +17,14 @@
         <!--  card_view:cardElevation="2dp"
           card_view:cardMaxElevation="4dp"-->
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:descendantFocusability="blocksDescendants"
-            android:padding="16dp">
+            android:padding="16dp"
+
+            >
 
             <LinearLayout
                 android:id="@+id/l_layout"
@@ -31,11 +34,18 @@
 
                 <TextView
                     android:id="@+id/generalText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="290dp"
                     android:layout_height="wrap_content"
                     android:text="@string/human"
                     android:textColor="#000"
                     android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/favoriteImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/favourite" />
             </LinearLayout>
 
             <RelativeLayout
@@ -48,6 +58,7 @@
 
                 <View
                     android:id="@+id/view"
+
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#3c4042" />
@@ -59,7 +70,6 @@
                     android:layout_below="@+id/view"
                     android:layout_margin="1dp"
                     android:gravity="start|center"
-                    android:text="@string/definition"
                     android:textColor="#000" />
             </RelativeLayout>
         </RelativeLayout>

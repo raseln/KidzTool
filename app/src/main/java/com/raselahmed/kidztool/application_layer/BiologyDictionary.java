@@ -38,7 +38,7 @@ public class BiologyDictionary extends AppCompatActivity {
         toggleButton = findViewById(R.id.toggleButton);
         dbHelper = DbHelper.getInstance(this);
         data = dbHelper.getDataOrderbyGN();
-        DictionaryAdapter adapter = new DictionaryAdapter(data, false);
+        DictionaryAdapter adapter = new DictionaryAdapter(data, false, this);
         recyclerView.setAdapter(adapter);
 
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -47,12 +47,12 @@ public class BiologyDictionary extends AppCompatActivity {
                 if (toggleButton.isChecked()) {
                     toggle = true;
                     data = dbHelper.getDataOrderbySN();
-                    DictionaryAdapter adapter = new DictionaryAdapter(data, true);
+                    DictionaryAdapter adapter = new DictionaryAdapter(data, true, BiologyDictionary.this);
                     recyclerView.setAdapter(adapter);
                 } else {
                     toggle = false;
                     data = dbHelper.getDataOrderbyGN();
-                    DictionaryAdapter adapter = new DictionaryAdapter(data, false);
+                    DictionaryAdapter adapter = new DictionaryAdapter(data, false, BiologyDictionary.this);
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -85,10 +85,10 @@ public class BiologyDictionary extends AppCompatActivity {
                 }
 
                 if (!toggle) {
-                    adapter1 = new DictionaryAdapter(filteredList, false);
+                    adapter1 = new DictionaryAdapter(filteredList, false, BiologyDictionary.this);
                     recyclerView.setAdapter(adapter1);
                 } else {
-                    adapter1 = new DictionaryAdapter(filteredList, true);
+                    adapter1 = new DictionaryAdapter(filteredList, true, BiologyDictionary.this);
                     recyclerView.setAdapter(adapter1);
                 }
                 return true;

@@ -18,11 +18,11 @@ import com.raselahmed.kidztool.models.BioDict;
 
 import java.util.ArrayList;
 
-public class CustomAdapter2 extends RecyclerView.Adapter<CustomAdapter2.MyViewHolder> {
+public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
     private ArrayList<BioDict> Data = new ArrayList<>();
     private Boolean check = false;
 
-    public CustomAdapter2(ArrayList<BioDict> data) {
+    public FavAdapter(ArrayList<BioDict> data) {
         Data = data;
     }
     @Override
