@@ -6,6 +6,13 @@
     android:orientation="vertical"
     tools:context="com.raselahmed.kidztool.application_layer.MainActivity">
 
+    <Button
+        android:id="@+id/btnQuizBio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quiz"
+        android:textAllCaps="false"/>
+
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="match_parent"
@@ -24,8 +31,5 @@
         android:layout_height="wrap_content"
         android:descendantFocusability="blocksDescendants"
         android:scrollbars="vertical"/>
-
-
-
 
 </LinearLayout>

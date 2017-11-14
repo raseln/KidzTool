@@ -2,7 +2,6 @@ package com.raselahmed.kidztool.adapters;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,11 +18,11 @@ import com.raselahmed.kidztool.models.BioDict;
 import java.util.ArrayList;
 
 public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
-    private ArrayList<BioDict> Data = new ArrayList<>();
+    private ArrayList<BioDict> data = new ArrayList<>();
     private Boolean check = false;
 
     public FavAdapter(ArrayList<BioDict> data) {
-        Data = data;
+        this.data = data;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -37,19 +36,17 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
             public void onClick(View v) {
                 if(!check)
                 {
-                    myViewHolder.expandablelayout.animate()
+                    myViewHolder.expandableLayout.animate()
                             .alpha(0.0f)
                             .setDuration(1000);
 
-
-                    myViewHolder.expandablelayout.setVisibility(View.GONE);
+                    myViewHolder.expandableLayout.setVisibility(View.GONE);
                     check=true;
                     //  myViewHolder.schedule.setVisibility(View.VISIBLE);
-
                 }
                 else {
-                    myViewHolder.expandablelayout.setVisibility(View.VISIBLE);
-                    myViewHolder.expandablelayout.animate()
+                    myViewHolder.expandableLayout.setVisibility(View.VISIBLE);
+                    myViewHolder.expandableLayout.animate()
                             .alpha(1.0f)
                             .setDuration(1000);
 
@@ -63,21 +60,21 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        TextView generalText, scientificText;
-        ImageButton imageButton;
-        generalText = holder.generalText;
-        scientificText = holder.scientificText;
-        imageButton = holder.imageButton;
+        //TextView generalText, scientificText;
+        //ImageButton imageButton;
+        //generalText = holder.generalText;
+        //scientificText = holder.scientificText;
+        //imageButton = holder.imageButton;
 
-        generalText.setText(Data.get(position).getGeneralName());
-        scientificText.setText(Data.get(position).getScientificName());
+        holder.generalText.setText(data.get(position).getGeneralName());
+        holder.scientificText.setText(data.get(position).getScientificName());
         //imageButton.setImageResource(R.mipmap.notfavorite);
-        imageButton.setBackgroundColor(Color.TRANSPARENT);
+        //imageButton.setBackgroundColor(Color.TRANSPARENT);
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
-                final String generalName = Data.get(position).getGeneralName();
+                final String generalName = data.get(position).getGeneralName();
                 final DbHelper dbHelper = DbHelper.getInstance(view.getContext());
                 AlertDialog.Builder alertBuilder = new AlertDialog.Builder(view.getContext());
                 alertBuilder.setMessage("Are you sure to delete this word from favourite?").setCancelable(true)
@@ -103,25 +100,24 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
                 alertDialog.show();
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return Data.size();
+        return data.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
         TextView generalText, scientificText;
-        RelativeLayout expandablelayout;
+        RelativeLayout expandableLayout;
         ImageButton imageButton;
 
         MyViewHolder(View itemView) {
             super(itemView);
             this.generalText = itemView.findViewById(R.id.generalText);
             this.scientificText = itemView.findViewById(R.id.scientificText);
-            this.expandablelayout = itemView.findViewById(R.id.expandableLayout);
-            //this.imageButton = itemView.findViewById(R.id.favoriteImg);
+            this.expandableLayout = itemView.findViewById(R.id.expandableLayout);
+            this.imageButton = itemView.findViewById(R.id.favoriteImg);
         }
     }
 }

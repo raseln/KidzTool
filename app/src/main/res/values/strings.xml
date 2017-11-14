@@ -20,4 +20,5 @@
     <string name="number_of_questions">Number of question</string>
     <string name="start_quiz">Start quiz</string>
     <string name="note">Note: You can skip a question to answer it later.\n You can also finish the quiz by clicking \"finish quiz\" button at any time.</string>
+    <string name="login">Login</string>
 </resources>

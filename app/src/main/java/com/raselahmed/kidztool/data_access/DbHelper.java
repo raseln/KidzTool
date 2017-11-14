@@ -40,7 +40,8 @@ public class DbHelper extends SQLiteAssetHelper{
         //String query = "SELECT * FROM "+TABLE_NAME[0]+" LIMIT '"+num+"'";
 
         //Cursor cursor = db.rawQuery(query, null);
-        Cursor cursor = db.query(TABLE_NAME[0], new String[]{"*"}, null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_NAME[0], new String[]{"*"}, null, null,
+                null, null, null);
         if (cursor != null){
             while (cursor.moveToNext()){
                 Question question = new Question(cursor.getInt(cursor.getColumnIndex("qno")),
@@ -60,44 +61,46 @@ public class DbHelper extends SQLiteAssetHelper{
         return questionList;
     }
 
-    public ArrayList<BioDict> getDataOrderbyGN(){
-        ArrayList<BioDict> NameList = new ArrayList<>();
+    public ArrayList<BioDict> getDataOrderByGN(){
+        ArrayList<BioDict> nameList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         //String query = "SELECT * FROM "+TABLE_NAME[0];
 
-        Cursor cursor = db.query(TABLE_NAME[1], new String[]{"*"}, null, null, null, null, "generalname");
+        Cursor cursor = db.query(TABLE_NAME[1], new String[]{"*"}, null,
+                null, null, null, "generalname");
         if(cursor!=null){
             while (cursor.moveToNext()){
                 String generalName = cursor.getString(cursor.getColumnIndex("generalname"));
                 String scientificName = cursor.getString(cursor.getColumnIndex("scientificname"));
 
                 BioDict Name = new BioDict(generalName, scientificName);
-                NameList.add(Name);
+                nameList.add(Name);
             }
             cursor.close();
         }
         db.close();;
-        return NameList;
+        return nameList;
     }
 
-    public ArrayList<BioDict> getDataOrderbySN(){
-        ArrayList<BioDict> NameList = new ArrayList<>();
+    public ArrayList<BioDict> getDataOrderBySN(){
+        ArrayList<BioDict> nameList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         //String query = "SELECT * FROM "+TABLE_NAME[0];
 
-        Cursor cursor = db.query(TABLE_NAME[1], new String[]{"*"}, null, null, null, null, "scientificname");
+        Cursor cursor = db.query(TABLE_NAME[1], new String[]{"*"}, null,
+                null, null, null, "scientificname");
         if(cursor!=null){
             while (cursor.moveToNext()){
                 String generalName = cursor.getString(cursor.getColumnIndex("generalname"));
                 String scientificName = cursor.getString(cursor.getColumnIndex("scientificname"));
 
                 BioDict Name = new BioDict(generalName, scientificName);
-                NameList.add(Name);
+                nameList.add(Name);
             }
             cursor.close();
         }
         db.close();;
-        return NameList;
+        return nameList;
     }
 
     public boolean addToFavorite(BioDict bioDict){
@@ -121,7 +124,8 @@ public class DbHelper extends SQLiteAssetHelper{
         SQLiteDatabase db = this.getReadableDatabase();
         //String query = "SELECT * FROM "+TABLE_NAME[0];
 
-        Cursor cursor = db.query(TABLE_NAME[2], new String[]{"*"}, null, null, null, null, "favgen");
+        Cursor cursor = db.query(TABLE_NAME[2], new String[]{"*"}, null,
+                null, null, null, "favgen");
         if(cursor!=null){
             while (cursor.moveToNext()){
                 String generalName = cursor.getString(cursor.getColumnIndex("favgen"));

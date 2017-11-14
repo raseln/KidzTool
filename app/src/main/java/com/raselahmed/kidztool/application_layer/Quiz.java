@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.raselahmed.kidztool.R;
 import com.raselahmed.kidztool.data_access.DbHelper;
+import com.raselahmed.kidztool.data_access.SpHandler;
 import com.raselahmed.kidztool.models.Question;
 
 import java.util.ArrayList;
@@ -25,22 +26,26 @@ public class Quiz extends AppCompatActivity {
     private TextView tvQuestion, tvScore;
     private RadioGroup radioGroup;
     private RadioButton rbOption1, rbOption2, rbOption3, rbOption4;
-    Button btnFinishExam, btnStarExam;
-    Spinner spinner;
+    private Button btnFinishExam, btnStarExam;
+    private Spinner spinner;
     private ArrayList<Question> questionList;
-    DbHelper dbHelper;
+    private SpHandler spHandler;
     private int position = 0, score = 0;
     private String answer;
-    TextView tvTimeLeft, tvNumberOfQues, tvFinishMessage;
-    String[] numberOfQuestions = {"5", "10", "15", "20"};
-    public int min, sec, mSec = 0, mSelfT = 0, counter = 0, numberOfQues = 0, answerCounter = 0, answerCounterCheck;
+    private TextView tvTimeLeft, tvNumberOfQues, tvFinishMessage;
+    private String[] numberOfQuestions = {"5", "10", "15", "20"};
+    private int min, sec, mSec = 0, mSelfT = 0, counter = 0, numberOfQues = 0, answerCounter = 0,
+            answerCounterCheck;
+    private boolean flag = false;
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        dbHelper = DbHelper.getInstance(this);
+        DbHelper dbHelper = DbHelper.getInstance(this);
+        spHandler = new SpHandler(this);
 
         tvTimeLeft = findViewById(R.id.timeLeft);
         tvQuestion = findViewById(R.id.tvQuestion);
@@ -65,39 +70,44 @@ public class Quiz extends AppCompatActivity {
         btnStarExam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numberOfQues = Integer.parseInt(spinner.getSelectedItem().toString());
-                answerCounterCheck = numberOfQues - 1;
-                mSec = numberOfQues * 15 * 1000;
-                mSelfT = mSec;
+                if (spHandler.getStatus()) {
+                    flag = true;
+                    numberOfQues = Integer.parseInt(spinner.getSelectedItem().toString());
+                    answerCounterCheck = numberOfQues - 1;
+                    mSec = numberOfQues * 15 * 1000;
+                    mSelfT = mSec;
 
-                btnFinishExam.setVisibility(View.VISIBLE);
-                tvNumberOfQues.setVisibility(View.GONE);
-                spinner.setVisibility(View.GONE);
-                btnStarExam.setVisibility(View.GONE);
-                radioGroup.setVisibility(View.VISIBLE);
-                tvQuestion.setVisibility(View.VISIBLE);
-                btnPrev.setVisibility(View.VISIBLE);
-                btnNext.setVisibility(View.VISIBLE);
-                tvFinishMessage.setVisibility(View.VISIBLE);
+                    btnFinishExam.setVisibility(View.VISIBLE);
+                    tvNumberOfQues.setVisibility(View.GONE);
+                    spinner.setVisibility(View.GONE);
+                    btnStarExam.setVisibility(View.GONE);
+                    radioGroup.setVisibility(View.VISIBLE);
+                    tvQuestion.setVisibility(View.VISIBLE);
+                    btnPrev.setVisibility(View.VISIBLE);
+                    btnNext.setVisibility(View.VISIBLE);
+                    tvFinishMessage.setVisibility(View.VISIBLE);
 
-                new CountDownTimer(mSec, 1000) {
+                    countDownTimer = new CountDownTimer(mSec, 1000) {
 
-                    @Override
-                    public void onTick(long l) {
-                        counter++;
-                        sec = mSelfT / 1000;
-                        min = sec / 60;
-                        sec = sec % 60;
-                        String str = "Time left " + min + " : " + sec;
-                        tvTimeLeft.setText(str);
-                        mSelfT = mSelfT - 1000;
-                    }
+                        @Override
+                        public void onTick(long l) {
+                            counter++;
+                            sec = mSelfT / 1000;
+                            min = sec / 60;
+                            sec = sec % 60;
+                            String str = "Time left " + min + " : " + sec;
+                            tvTimeLeft.setText(str);
+                            mSelfT = mSelfT - 1000;
+                        }
 
-                    @Override
-                    public void onFinish() {
-                        finishQuiz();
-                    }
-                }.start();
+                        @Override
+                        public void onFinish() {
+                            finishQuiz();
+                        }
+                    }.start();
+                } else {
+                    Toast.makeText(Quiz.this, "To participate in quiz you have to login first.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -112,6 +122,10 @@ public class Quiz extends AppCompatActivity {
                 //if (answerCounter<=numberOfQues) {
                 if (rbOption1.isChecked() || rbOption2.isChecked() || rbOption3.isChecked() || rbOption4.isChecked()) {
                     String ans = ((RadioButton) findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
+                    rbOption1.setChecked(false);
+                    rbOption2.setChecked(false);
+                    rbOption3.setChecked(false);
+                    rbOption4.setChecked(false);
 
                     if (ans.equalsIgnoreCase(answer)) {
                         Toast.makeText(Quiz.this, "Correct Answer!", Toast.LENGTH_SHORT).show();
@@ -182,10 +196,6 @@ public class Quiz extends AppCompatActivity {
     }
 
     private void setQuestion(int pos) {
-        rbOption1.setChecked(false);
-        rbOption2.setChecked(false);
-        rbOption3.setChecked(false);
-        rbOption4.setChecked(false);
         answer = questionList.get(pos).getAnswer();
         String currentScore = "Your current score: " + score;
         tvScore.setText(currentScore);
@@ -197,10 +207,20 @@ public class Quiz extends AppCompatActivity {
     }
 
     private void finishQuiz() {
+        countDownTimer.cancel();
         finish();
         Intent intent = new Intent(Quiz.this, QuizResult.class);
         intent.putExtra("score", score);
         intent.putExtra("timeConsumed", counter);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (flag) {
+            Toast.makeText(this, "To go back, click \"Finish exam\" first.", Toast.LENGTH_SHORT).show();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

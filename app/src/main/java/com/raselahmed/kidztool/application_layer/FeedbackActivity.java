@@ -65,6 +65,5 @@ public class FeedbackActivity extends AppCompatActivity implements View.OnClickL
         } catch (Exception ex) {
             Toast.makeText(this, "Unexpected Error..!!", Toast.LENGTH_SHORT).show();
         }
-
     }
 }

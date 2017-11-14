@@ -2,7 +2,6 @@ package com.raselahmed.kidztool.adapters;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -67,7 +66,7 @@ public class DictionaryAdapter extends RecyclerView.Adapter<DictionaryAdapter.My
         TextView generalText, scientificText;
         generalText = holder.generalText;
         scientificText = holder.scientificText;
-        holder.imageButton.setBackgroundColor(Color.TRANSPARENT);
+        //holder.imageButton.setBackgroundColor(Color.TRANSPARENT);
 
         if (flag) {
             generalText.setText(data.get(position).getGeneralName());

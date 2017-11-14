@@ -1,11 +1,13 @@
 package com.raselahmed.kidztool.application_layer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ToggleButton;
 
@@ -17,7 +19,7 @@ import com.raselahmed.kidztool.models.BioDict;
 import java.util.ArrayList;
 
 public class BiologyDictionary extends AppCompatActivity {
-    ArrayList<BioDict> data;
+    ArrayList<BioDict> sciNameList, genNameList;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView recyclerView;
     DbHelper dbHelper;
@@ -37,22 +39,28 @@ public class BiologyDictionary extends AppCompatActivity {
         searchView = findViewById(R.id.SearchView);
         toggleButton = findViewById(R.id.toggleButton);
         dbHelper = DbHelper.getInstance(this);
-        data = dbHelper.getDataOrderbyGN();
-        DictionaryAdapter adapter = new DictionaryAdapter(data, false, this);
+        sciNameList = dbHelper.getDataOrderBySN();
+        genNameList = dbHelper.getDataOrderByGN();
+        DictionaryAdapter adapter = new DictionaryAdapter(sciNameList, false, this);
         recyclerView.setAdapter(adapter);
+
+        findViewById(R.id.btnQuizBio).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Quiz.class));
+            }
+        });
 
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (toggleButton.isChecked()) {
                     toggle = true;
-                    data = dbHelper.getDataOrderbySN();
-                    DictionaryAdapter adapter = new DictionaryAdapter(data, true, BiologyDictionary.this);
+                    DictionaryAdapter adapter = new DictionaryAdapter(sciNameList, true, BiologyDictionary.this);
                     recyclerView.setAdapter(adapter);
                 } else {
                     toggle = false;
-                    data = dbHelper.getDataOrderbyGN();
-                    DictionaryAdapter adapter = new DictionaryAdapter(data, false, BiologyDictionary.this);
+                    DictionaryAdapter adapter = new DictionaryAdapter(sciNameList, false, BiologyDictionary.this);
                     recyclerView.setAdapter(adapter);
                 }
             }
@@ -74,12 +82,12 @@ public class BiologyDictionary extends AppCompatActivity {
                 ArrayList<BioDict> filteredList = new ArrayList<>();
                 String query;
 
-                for (int i = 0; i < data.size(); i++) {
+                for (int i = 0; i < sciNameList.size(); i++) {
                     if (!toggle) {
-                        query = data.get(i).getGeneralName().toLowerCase();
-                    } else query = data.get(i).getScientificName().toLowerCase();
+                        query = sciNameList.get(i).getGeneralName().toLowerCase();
+                    } else query = genNameList.get(i).getScientificName().toLowerCase();
                     if (query.contains(newText)) {
-                        BioDict Name = new BioDict(data.get(i).getGeneralName(), data.get(i).getScientificName());
+                        BioDict Name = new BioDict(sciNameList.get(i).getGeneralName(), sciNameList.get(i).getScientificName());
                         filteredList.add(Name);
                     }
                 }

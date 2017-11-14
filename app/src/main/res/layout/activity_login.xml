@@ -4,15 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/customRegBackground"
     tools:context="com.raselahmed.kidztool.application_layer.LoginActivity">
 
-    <EditText
-        android:id="@+id/etEmailLogin"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Enter your email here"
-        android:gravity="center"/>
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:textColorHint="@android:color/holo_blue_dark">
+
+        <EditText
+            android:id="@+id/etEmailLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Enter your email here"
+            android:gravity="center"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:textColorHint="@android:color/holo_blue_dark">
 
     <EditText
         android:id="@+id/etPasswordLogin"
@@ -21,12 +38,16 @@
         android:inputType="textPassword"
         android:hint="Enter password"
         android:gravity="center"/>
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/login"
+        android:textColor="@android:color/white"
         android:background="@drawable/signin_button_background"
         android:layout_gravity="center"/>
 
@@ -34,6 +55,7 @@
         android:id="@+id/tvRegLink"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:text="Don't have an account? Register."
         android:gravity="center"/>
 </LinearLayout>

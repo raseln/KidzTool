@@ -17,10 +17,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.raselahmed.kidztool.R;
+import com.raselahmed.kidztool.data_access.SpHandler;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText etEmail,etPassword;
+    EditText etEmail, etPassword;
     TextView tvLink;
     Button btnLogin;
     private ProgressDialog progressDialog;
@@ -31,10 +32,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        progressDialog =new ProgressDialog(this);
+        progressDialog = new ProgressDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
 
-        if (firebaseAuth.getCurrentUser() != null){
+        if (firebaseAuth.getCurrentUser() != null) {
             finish();
             startActivity(new Intent(this, Profile.class));
         }
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Enter email", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -81,11 +82,13 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
+                            SpHandler spHandler = new SpHandler(LoginActivity.this);
+                            spHandler.saveStatus();
                             Toast.makeText(getApplicationContext(), "Login Success!", Toast.LENGTH_SHORT).show();
                             finish();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        }else {
+                        } else {
                             Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                         }
                     }
